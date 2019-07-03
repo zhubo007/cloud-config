@@ -8,19 +8,23 @@ server:
 spring:
   profiles: dev
   application: 
-    name: microservicecloud-config-client
+    name: cloud-config-client
 eureka: 
-  client: 
+  client:
+    register-with-eureka: false
+    fetch-registry: false
     service-url: 
-      defaultZone: http://eureka-dev.com:7001/eureka/   
+      defaultZone: http://eureka-dev.com:7001/eureka/
 ---
 server: 
   port: 8202 
 spring:
   profiles: test
   application: 
-    name: microservicecloud-config-client
+    name: cloud-config-client
 eureka: 
   client: 
+    register-with-eureka: false
+    fetch-registry: false
     service-url: 
       defaultZone: http://eureka-test.com:7001/eureka/
