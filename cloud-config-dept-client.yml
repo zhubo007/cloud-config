@@ -12,7 +12,7 @@ spring:
    datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://hadoop101:3306/cloudDB01
+    url: jdbc:mysql://hadoop101:3306/cloudDB03
     username: root
     password: bob225812
     dbcp2:
