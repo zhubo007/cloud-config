@@ -1,0 +1,62 @@
+spring:
+  profiles:
+    active:
+    - server7001
+---
+server:
+  port: 7001
+
+spring:
+  profiles: server7001
+  application:
+    name: cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    register-with-eureka: false # 当前的eureka-server自己不注册进服务列表中
+    fetch-registry: false # 不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  server:
+    enable-self-preservation: true  #默认开启自我保护机制，不建议关闭
+
+---
+server:
+  port: 7002
+
+spring:
+  profiles: server7002
+  application:
+    name: cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: eureka7002.com
+  client:
+    register-with-eureka: false # 当前的eureka-server自己不注册进服务列表中
+    fetch-registry: false # 不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7003.com:7003/eureka/
+  server:
+    enable-self-preservation: true  #默认开启自我保护机制，不建议关闭
+---
+server:
+  port: 7003
+
+spring:
+  profiles: server7003
+  application:
+    name: cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: eureka7003.com
+  client:
+    register-with-eureka: false # 当前的eureka-server自己不注册进服务列表中
+    fetch-registry: false # 不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  server:
+    enable-self-preservation: true  #默认开启自我保护机制，不建议关闭
